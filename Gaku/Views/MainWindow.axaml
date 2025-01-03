@@ -7,14 +7,177 @@
         x:Class="Gaku.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Gaku">
+        Title="Gaku"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        >
+        <!-- ExtendClientAreaToDecorationsHint="True"> Extends to Window Control -->
 
+    
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+<!-- Root Layout -->
+    <Grid>
+        <!-- Defining Rows -->
+        <Grid.RowDefinitions>
+            <!-- Title Bar Offset Row -->
+            <RowDefinition Height="30"/> 
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/> 
+        </Grid.RowDefinitions>
 
+        <!-- Full-Width Panel Below Title Bar for application buttons -->
+        <Border Grid.Row="0"
+                Background="#AA000000"
+                Height="50"
+                HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/> 
+                    <ColumnDefinition Width="*"/>    
+                    <ColumnDefinition Width="Auto"/> 
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Buttons -->
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Margin="10,0">
+                    <Button Margin="0, 10, 20, 0"
+                            Padding="10,5"
+                            Click="OnTakeScreenshotButtonClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <Path Data="{StaticResource CaptureScreenIcon}"
+                                      Width="16"
+                                      Height="16"
+                                      Fill="White"/>
+                            <TextBlock Text="Capture Screen"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0, 10, 20, 0"
+                            Padding="10,5"
+                            Click="OnSaveButtonClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource SaveIcon}"
+                                      Width="16"
+                                      Height="16"/>
+                            <TextBlock Text="Save"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0, 10, 40, 0"
+                            Padding="10,5"
+                            Click="OnSaveAsButtonClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource SaveAsIcon}"
+                                      Width="16"
+                                      Height="16"/>
+                            <TextBlock Text="Save As"
+                                        VerticalAlignment="Center"
+                                        Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Center Title -->
+                <TextBlock Grid.Column="1"
+                           Text="Gaku"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="16"/>
+
+                <!-- Right Buttons -->
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="10,0">
+                    <Button Margin="0, 10, 20, 0"
+                            Padding="10,5"
+                            Click="OnSettingsButtonClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <Path Data="{StaticResource SettingsIcon}"
+                                      Width="16"
+                                      Height="16"
+                                      Fill="White"
+                                      />
+                            <TextBlock Text="Configuration"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0, 10, 0, 0"
+                            Padding="10,5"
+                            Click="OnHelpButtonClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource HelpIcon}"
+                                      Width="16"
+                                      Height="16"/>
+                            <TextBlock Text="Help"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Area (Split Vertically with 70/30 Ratio) -->
+        <Grid Grid.Row="2"
+              Margin="0,10,0,0"> <!-- Added margin to create separation from the menu bar -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/> 
+                <ColumnDefinition Width="3*"/> 
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Section (70%) -->
+            <Border Grid.Column="0"
+                    Background="#222222"
+                    BorderThickness="1"
+                    BorderBrush="Gray"
+                    Margin="5">
+                <TextBlock Text="Screenshot Preview Section"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           FontSize="18"/>
+            </Border>
+
+            <!-- Right Section (30%) -->
+            <Border Grid.Column="1"
+                    Background="#333333"
+                    BorderThickness="1"
+                    BorderBrush="Gray"
+                    Margin="5">
+                <TextBlock Text="Capture Settings Section"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           FontSize="18"/>
+            </Border>
+        </Grid>
+    </Grid>
 </Window>

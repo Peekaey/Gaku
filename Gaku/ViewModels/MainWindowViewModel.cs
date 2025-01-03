@@ -1,6 +1,23 @@
-﻿namespace Gaku.ViewModels;
+﻿using System.Threading.Tasks;
+using Avalonia.Controls;
+using Avalonia.Platform.Storage;
+using Gaku.Interfaces;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace Gaku.ViewModels;
+
+public partial class MainWindowViewModel : ViewModelBase, IScreenCaptureService
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    private readonly IScreenCaptureService _screenCaptureService;
+    
+    public MainWindowViewModel(IScreenCaptureService screenCaptureService)
+    {
+        _screenCaptureService = screenCaptureService;
+    }
+    
+    public async Task CaptureAndSave(Window window, IStorageFile? filePath)
+    {
+        
+        await _screenCaptureService.CaptureAndSave(window, filePath);
+    }
+    
 }
