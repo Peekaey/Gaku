@@ -1,6 +1,7 @@
 ## Gaku
 Cross platform screenshot utility written in .NET with [AvaloniaUI](https://avaloniaui.net/)
 
+Still in early development phase with everything subject to change.
 
 ### Short Term Roadmap (MacOS)
 
@@ -19,6 +20,7 @@ Cross platform screenshot utility written in .NET with [AvaloniaUI](https://aval
 | 11| Implement Hotkeys Support                              | X        |   
 | 12| Move from OSAScript to a more modern impementation     | X        |
 | 13| Ask for Permission to capture screen (MacOS)           | X        |
+| 14| Implement functionality of settings                    | X        |
 
 
 Work on hotkey first
