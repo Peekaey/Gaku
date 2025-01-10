@@ -1,4 +1,4 @@
-## Gaku
+## Gaku (WIP)
 Cross platform screenshot utility written in .NET with [AvaloniaUI](https://avaloniaui.net/)
 
 Still in early development phase with everything subject to change.
