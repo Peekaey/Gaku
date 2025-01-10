@@ -3,16 +3,15 @@
         xmlns:vm="using:Gaku.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
+        Height="600"
+        Width="1000"
         x:Class="Gaku.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Gaku"
-        TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
+        Background="{DynamicResource PrimaryBackgroundColor}"
         >
-        <!-- ExtendClientAreaToDecorationsHint="True"> Extends to Window Control -->
-
     
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -32,7 +31,7 @@
 
         <!-- Full-Width Panel Below Title Bar for application buttons -->
         <Border Grid.Row="0"
-                Background="#AA000000"
+                Background="{DynamicResource PrimaryBackgroundColor}"
                 Height="50"
                 HorizontalAlignment="Stretch">
             <Grid>
@@ -49,7 +48,8 @@
                             Margin="10,0">
                     <Button Margin="0, 10, 20, 0"
                             Padding="10,5"
-                            Click="OnTakeScreenshotButtonClick">
+                            Click="CaptureRegionButtonClick"
+                            Background="{DynamicResource SecondaryBackgroundColor}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="5"
                                     VerticalAlignment="Center"
@@ -57,51 +57,72 @@
                             <Path Data="{StaticResource CaptureScreenIcon}"
                                       Width="16"
                                       Height="16"
-                                      Fill="White"/>
-                            <TextBlock Text="Capture Screen"
+                                      Fill="{DynamicResource PrimaryForegroundColor}"/>
+                            <TextBlock Text="Capture Region"
                                        VerticalAlignment="Center"
-                                       Foreground="White"/>
+                                       Foreground="{DynamicResource PrimaryForegroundColor}"/>
                         </StackPanel>
                     </Button>
                     <Button Margin="0, 10, 20, 0"
                             Padding="10,5"
-                            Click="OnSaveButtonClick">
+                            Click="CaptureFullscreenButtonClick"
+                            Background="{DynamicResource SecondaryBackgroundColor}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="5"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
-                            <PathIcon Data="{StaticResource SaveIcon}"
+                            <Path Data="{StaticResource CaptureScreenIcon}"
+                                  Width="16"
+                                  Height="16"
+                                  Fill="{DynamicResource PrimaryForegroundColor}"/>
+                            <TextBlock Text="Capture Fullscreen"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryForegroundColor}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0, 10, 20, 0"
+                            Padding="10,5"
+                            Click="OnSaveButtonClick"
+                            Background="{DynamicResource SecondaryBackgroundColor}">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <Path Data="{StaticResource SaveIcon}"
                                       Width="16"
-                                      Height="16"/>
+                                      Height="16"
+                                      Fill="{DynamicResource PrimaryForegroundColor}"/>
                             <TextBlock Text="Save"
                                        VerticalAlignment="Center"
-                                       Foreground="White"/>
+                                       Foreground="{DynamicResource PrimaryForegroundColor}"/>
                         </StackPanel>
                     </Button>
                     <Button Margin="0, 10, 40, 0"
                             Padding="10,5"
-                            Click="OnSaveAsButtonClick">
+                            Click="OnSaveAsButtonClick"
+                            Background="{DynamicResource SecondaryBackgroundColor}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="5"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
-                            <PathIcon Data="{StaticResource SaveAsIcon}"
+                            <Path Data="{StaticResource SaveAsIcon}"
                                       Width="16"
-                                      Height="16"/>
+                                      Height="16"
+                                      Fill="{DynamicResource PrimaryForegroundColor}"/>
                             <TextBlock Text="Save As"
                                         VerticalAlignment="Center"
-                                        Foreground="White"/>
+                                        Foreground="{DynamicResource PrimaryForegroundColor}"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
-                <!-- Center Title -->
-                <TextBlock Grid.Column="1"
-                           Text="Gaku"
-                           Foreground="White"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="16"/>
+                <!-- Center Title (Middle of Bar) -->
+                <!-- <TextBlock Grid.Column="1" -->
+                <!--            Text="Gaku" -->
+                <!--            Foreground="White" -->
+                <!--            HorizontalAlignment="Center" -->
+                <!--            VerticalAlignment="Center" -->
+                <!--            FontSize="16"/> -->
 
                 <!-- Right Buttons -->
                 <StackPanel Orientation="Horizontal"
@@ -111,7 +132,8 @@
                             Margin="10,0">
                     <Button Margin="0, 10, 20, 0"
                             Padding="10,5"
-                            Click="OnSettingsButtonClick">
+                            Click="OnSettingsButtonClick"
+                            Background="{DynamicResource SecondaryBackgroundColor}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="5"
                                     VerticalAlignment="Center"
@@ -119,64 +141,51 @@
                             <Path Data="{StaticResource SettingsIcon}"
                                       Width="16"
                                       Height="16"
-                                      Fill="White"
+                                      Fill="{DynamicResource PrimaryForegroundColor}"
                                       />
-                            <TextBlock Text="Configuration"
+                            <TextBlock Text="Settings"
                                        VerticalAlignment="Center"
-                                       Foreground="White"/>
+                                       Foreground="{DynamicResource PrimaryForegroundColor}"/>
                         </StackPanel>
                     </Button>
                     <Button Margin="0, 10, 0, 0"
                             Padding="10,5"
-                            Click="OnHelpButtonClick">
+                            Click="OnHelpButtonClick"
+                            Background="{DynamicResource SecondaryBackgroundColor}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="5"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
-                            <PathIcon Data="{StaticResource HelpIcon}"
+                            <Path Data="{StaticResource HelpIcon}"
                                       Width="16"
-                                      Height="16"/>
+                                      Height="16"
+                                      Fill="{DynamicResource PrimaryForegroundColor}"/>
                             <TextBlock Text="Help"
                                        VerticalAlignment="Center"
-                                       Foreground="White"/>
+                                       Foreground="{DynamicResource PrimaryForegroundColor}"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
             </Grid>
         </Border>
-
-        <!-- Main Content Area (Split Vertically with 70/30 Ratio) -->
+        
         <Grid Grid.Row="2"
-              Margin="0,10,0,0"> <!-- Added margin to create separation from the menu bar -->
+              Margin="0,10,0,0"
+              Background="{DynamicResource PrimaryBackgroundColor}"> <!-- Added margin to create separation from the menu bar -->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="7*"/> 
-                <ColumnDefinition Width="3*"/> 
+                <ColumnDefinition Width="*"/> 
             </Grid.ColumnDefinitions>
-
-            <!-- Left Section (70%) -->
+            
             <Border Grid.Column="0"
-                    Background="#222222"
+                    Background="{DynamicResource PrimaryBackgroundColor}"
                     BorderThickness="1"
                     BorderBrush="Gray"
                     Margin="5">
-                <TextBlock Text="Screenshot Preview Section"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Foreground="White"
-                           FontSize="18"/>
-            </Border>
-
-            <!-- Right Section (30%) -->
-            <Border Grid.Column="1"
-                    Background="#333333"
-                    BorderThickness="1"
-                    BorderBrush="Gray"
-                    Margin="5">
-                <TextBlock Text="Capture Settings Section"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Foreground="White"
-                           FontSize="18"/>
+                <Image Source="{Binding CapturedImage}"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                />
             </Border>
         </Grid>
     </Grid>

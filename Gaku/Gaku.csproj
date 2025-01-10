@@ -25,5 +25,22 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1"/>
         <PackageReference Include="IconPacks.Avalonia.BootstrapIcons" Version="1.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Notification.Avalonia" Version="2.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\Platform\Linux\" />
+      <Folder Include="Services\Platform\Windows\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Main\MainWindow.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Main\MainWindow.axaml.cs">
+        <DependentUpon>MainWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>
