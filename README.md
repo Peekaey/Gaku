@@ -3,6 +3,8 @@ Cross platform screenshot utility written in .NET with [AvaloniaUI](https://aval
 
 Still in early development phase with everything subject to change.
 
+_On hold till I learn more about rust for the screen capture side of things_
+
 <img src="https://raw.githubusercontent.com/Peekaey/Gaku/master/Gaku/Assets/Gaku.png" alt="Gaku" style="width: 650px; height: auto;">
 
 ### Short Term Roadmap (MacOS)
